@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+
+<link href="/assets/css/styles.css" rel="stylesheet" />
+<title>Pasajeros</title>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg">
+			<div class="container-fluid justify-content-end">
+				<button class="navbar-toggler custom-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end"
+					id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-link active" href="/pasajeros/pasajeros">Pasajeros
+						</a> <a class="nav-link" href="/destinos/destinos">Destinos</a> <a
+							class="nav-link" href="/pasajeros/crear">Nuevo Pasajero</a> <a
+							class="nav-link" href="/destinos/crear">Nuevo Destino</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<h3>Listado de pasajeros</h3>
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">Rut</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Apellido</th>
+						<th scope="col">Edad</th>
+						<th scope="col">Ciudad Natal</th>
+						<th scope="col">Destinos</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pasajero: ${pasajeros}">
+						<td th:text="${pasajero.rut}" />
+						<td th:text="${pasajero.nombre}" />
+						<td th:text="${pasajero.apellido}" />
+						<td th:text="${pasajero.edad}" />
+						<td th:text="${pasajero.ciudadNatal}" />
+						<td><label th:each="destino: ${pasajero.destinos}"
+							th:text="${' - '+destino.ciudad}"> </label></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-2">
+			<p></p>
+		</div>
+	</div>
+
+</body>
+</html>
